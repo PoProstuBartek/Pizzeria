@@ -91,7 +91,7 @@
                   {{#each options}}
                   <div class="checkbox checkbox--round"> <!-- radio -->
                     <label>
-                      {{{ label }}} (${{{ price }}})
+                      {{{ label }}} ($$${{{ price }}})
                       <input type="radio" name="{{ paramId }}" value="{{ @key }}" id="{{ @key }}" {{#if default}}checked{{/if}}>
                       <span class="checkbox__checkmark"></span>
                     </label>
