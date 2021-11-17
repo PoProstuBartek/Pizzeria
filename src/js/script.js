@@ -166,8 +166,9 @@
       
         for(let optionId in param.options) {
           const option = param.options[optionId];
-          console.log(option);
-          if(formData[paramId] && formData[paramId].includes(optionId)) {
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
+          if(optionSelected) {
             if(!option.default) {
               price += option.price;
             }
@@ -179,7 +180,7 @@
           const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
 
           if(optionImage){
-            if(formData[paramId] && formData[paramId].includes(optionId)) {
+            if(optionSelected) {
               optionImage.classList.add(classNames.menuProduct.imageVisible);
             } else {
               optionImage.classList.remove(classNames.menuProduct.imageVisible);
