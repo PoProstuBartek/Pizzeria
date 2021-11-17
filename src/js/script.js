@@ -116,6 +116,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -157,15 +158,15 @@
       const thisProduct = this;
     
       const formData = utils.serializeFormToObject(thisProduct.form);
-  
+    
       let price = thisProduct.data.price;
   
       for(let paramId in thisProduct.data.params) {
         const param = thisProduct.data.params[paramId];
-    
+      
         for(let optionId in param.options) {
           const option = param.options[optionId];
-
+          console.log(option);
           if(formData[paramId] && formData[paramId].includes(optionId)) {
             if(!option.default) {
               price += option.price;
@@ -173,6 +174,15 @@
           } else {
             if(option.default){
               price -= option.price;
+            }
+          }
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+
+          if(optionImage){
+            if(formData[paramId] && formData[paramId].includes(optionId)) {
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+            } else {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
         }
