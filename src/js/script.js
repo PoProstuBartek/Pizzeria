@@ -190,7 +190,6 @@
           }
         }
       }
-      /* multiply price by amount */
       price *= thisProduct.amountWidget.value;
       thisProduct.priceElem.innerHTML = price;
     }
@@ -209,13 +208,12 @@
   class AmountWidget {
     constructor(element){
       const thisWidget = this;
+      thisWidget.value = settings.amountWidget.defaultValue;
 
       thisWidget.getElements(element);
       thisWidget.satValue(thisWidget.input.value);
       thisWidget.initActions();
 
-      console.log('AmountWidget', thisWidget);
-      console.log('constructor arguments ', element);
     }
 
     getElements(element){
@@ -225,7 +223,6 @@
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
-      thisWidget.value = settings.amountWidget.defaultValue;
     }
 
     satValue(value){
