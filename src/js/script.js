@@ -149,23 +149,18 @@
         thisCart.totalNumber += product.amount;
         thisCart.subtotalPrice += product.price;
       }
-      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
 
       if(thisCart.totalNumber && thisCart.totalNumber > 0){
         thisCart.totalPrice = deliveryFee + thisCart.subtotalPrice;
-        thisCart.dom.deliveryFee.innerHTML = deliveryFee;
-        thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
-        thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
       } else {
-        thisCart.dom.deliveryFee.innerHTML = 0;
-        thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
         thisCart.totalPrice = 0;
       }
-     
+
+      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+      thisCart.dom.deliveryFee.innerHTML = deliveryFee;
+      thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
       thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
       
-      console.log('totalNumber: ', thisCart.totalNumber);
-      console.log('subtotalPrice: ', thisCart.subtotalPrice);
       console.log('totalPrice: ', thisCart.totalPrice);
     }
   }
@@ -222,7 +217,6 @@
         },
       });
       thisCartProduct.dom.wrapper.dispatchEvent(event);
-      console.log('REMOVE WYWOŁANA');
     }
 
     initActions() {
@@ -451,7 +445,6 @@
       return params;
     }
   }
-  
 
   class AmountWidget {
     constructor(element){
