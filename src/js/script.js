@@ -156,7 +156,13 @@
         body: JSON.stringify(payload)
       };
 
-      fetch(url, options);
+      fetch(url, options)
+        .then(function(response){
+          return response.json();
+        }).then(function(parsedResponse){
+          console.log('parsedResponse ', parsedResponse);
+          alert('You have successfully ordered ' + payload.totalNumber + ' items!');
+        });
     }
 
     remove(remove){
