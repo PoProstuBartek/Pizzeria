@@ -1,5 +1,4 @@
 import { settings, select } from '../settings.js';
-import Booking from './Booking.js';
 
 class AmountWidget {
   constructor(element){
