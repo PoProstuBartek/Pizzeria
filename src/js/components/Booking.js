@@ -7,7 +7,8 @@ import HourPicker from './HourPicker.js';
 class Booking{
   constructor(element){
     const thisBooking = this;
-    
+
+    thisBooking.selectedTables = [];
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
@@ -45,7 +46,6 @@ class Booking{
       eventsRepeat:  settings.db.url + '/' + settings.db.events  
                                      + '?' + params.eventsRepeat.join('&'),
     };
-    console.log('URLS: ', urls);
 
     Promise.all([
       fetch(urls.booking),
@@ -169,6 +169,7 @@ class Booking{
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector(select.booking.floorPlan);
   }
 
   initWidgets(){
@@ -177,30 +178,72 @@ class Booking{
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
 
     thisBooking.dom.peopleAmount.addEventListener('updated', function(){
-
+      thisBooking.removeTableSelection();
     });
 
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
 
     thisBooking.dom.hoursAmount.addEventListener('updated', function(){
-
+      thisBooking.removeTableSelection();
     });
 
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
 
     thisBooking.dom.hourPicker.addEventListener('updated', function(){
-
+      thisBooking.removeTableSelection();
     });
 
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
 
     thisBooking.dom.datePicker.addEventListener('updated', function(){
-
+      thisBooking.removeTableSelection();
     });
 
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
+
+    thisBooking.dom.floorPlan.addEventListener('click', function(){
+      thisBooking.initTables(event);
+     
+    });
+  }
+
+  initTables(event){
+    event.preventDefault();
+    const thisBooking = this;
+    
+    const clickedElem = event.target;
+    const clickedTable = clickedElem.classList.contains(classNames.booking.table);
+    const bookedTable = clickedElem.classList.contains(classNames.booking.tableBooked);
+    const selectedTable = clickedElem.classList.contains(classNames.booking.tableSelected);
+
+
+    if (clickedTable && !bookedTable) {
+      thisBooking.removeTableSelection();
+      //clickedElem.classList.remove(classNames.booking.tableSelected);
+      if(!selectedTable){
+        thisBooking.tableSelected = parseInt(
+          clickedElem.getAttribute('data-table')
+        );
+        thisBooking.selectedTables.push(thisBooking.tableSelected);
+        clickedElem.classList.toggle(classNames.booking.tableSelected);
+        console.log('selectedTables: ', thisBooking.selectedTables);
+      }
+    }
+
+    if(bookedTable){
+      alert('This table is not avaiable');
+    }
+  }
+
+  removeTableSelection(){
+    const thisBooking = this;
+    for(const table of thisBooking.dom.tables){
+      table.classList.remove(classNames.booking.tableSelected);
+
+    }
+    thisBooking.selectedTables = [];
   }
 }
 
