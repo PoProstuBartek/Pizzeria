@@ -170,6 +170,10 @@ class Booking{
     
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector(select.booking.floorPlan);
+    thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
+    thisBooking.dom.phone = thisBooking.dom.form.querySelector(select.booking.phone);
+    thisBooking.dom.address = thisBooking.dom.form.querySelector(select.booking.address);
+    thisBooking.dom.starters = thisBooking.dom.form.querySelectorAll(select.booking.starters);
   }
 
   initWidgets(){
@@ -203,9 +207,14 @@ class Booking{
       thisBooking.updateDOM();
     });
 
-    thisBooking.dom.floorPlan.addEventListener('click', function(){
+    thisBooking.dom.floorPlan.addEventListener('click', function(event){
       thisBooking.initTables(event);
      
+    });
+
+    thisBooking.dom.form.addEventListener('submit', function(event){
+      event.preventDefault();
+      thisBooking.sendBoking();
     });
   }
 
@@ -245,6 +254,41 @@ class Booking{
     }
     thisBooking.selectedTables = [];
   }
+
+  sendBoking(){
+    const thisBooking = this;
+    const url = settings.db.url + '/' + settings.db.bookings;
+    let payload = {};
+
+    payload.date = thisBooking.datePicker.value;
+    payload.hour = thisBooking.hourPicker.value;
+    payload.table = thisBooking.tableSelected;
+    payload.duration = thisBooking.hoursAmount.value;
+    payload.ppl = thisBooking.peopleAmount.value;
+    payload.starters = [];
+    payload.phone = thisBooking.dom.phone.value;
+    payload.adress = thisBooking.dom.address.value;
+
+    for (let starter of thisBooking.dom.starters){
+      if(starter.checked){
+        payload.starters.push(starter.value);
+      }
+    }
+
+
+    const options = { 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    };
+
+    fetch(url, options);
+    console.log(url, options);
+    thisBooking.makeBooked(payload.date, payload.hour,payload.duration,payload.table);
+  }
+
 }
 
 export default Booking;
