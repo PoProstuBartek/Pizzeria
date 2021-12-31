@@ -275,7 +275,6 @@ class Booking{
       }
     }
 
-
     const options = { 
       method: 'POST',
       headers: {
@@ -284,8 +283,14 @@ class Booking{
       body: JSON.stringify(payload)
     };
 
-    fetch(url, options);
-    console.log(url, options);
+    fetch(url, options)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse ', parsedResponse);
+        alert('You have successfully booked a table for ' + payload.ppl + ' !');
+      });
+    
     thisBooking.makeBooked(payload.date, payload.hour,payload.duration,payload.table);
   }
 
