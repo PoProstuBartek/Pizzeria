@@ -1,6 +1,6 @@
 import { settings, select, classNames, templates } from '../settings.js';
 import utils from '../utils.js';
-import cartProduct from './CartProduct.js';
+import CartProduct from './CartProduct.js';
 
 
 class Cart {
@@ -101,7 +101,7 @@ class Cart {
     
     thisCart.dom.productList.appendChild(generatedDOM);
 
-    thisCart.products.push(new cartProduct(menuProduct, generatedDOM));
+    thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
 
     thisCart.update();
   }
