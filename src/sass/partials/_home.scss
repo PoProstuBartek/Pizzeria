@@ -11,141 +11,180 @@ a {
   border-radius: $radius;
   max-width: 700px;
 
-  .home-header {
-    display: flex;
-    text-transform: uppercase;
+}
 
-    .text{
-      position: absolute;
-      z-index: 5;
-    }
+.home-header {
+  display: flex;
+  text-transform: uppercase;
 
-    h2 {
-      font-size: 26px;
+  .text{
+    position: absolute;
+    z-index: 5;
+    transition: 1s;
+
+    p {
+      font-size: 13px;
+      font-family: $font-text;
+      opacity: 0;
       color: $color-light;
       text-align: center;
-      padding: 20px 45px;
+      text-transform: initial;
     }
 
-    img {
-      position: relative;
-      width: 280px;
-      height: 110px;
-      margin-right: 5px;
-      z-index: 3;
-      object-fit: cover;
-      padding-bottom: 5px;
-    }
-  }
+    &:hover{
+      margin-top: -30px;
+      transition: 1s;
 
-  .open-hours {
-    margin-top: -25px;
-    text-align: center;
-    background: $color-main;
-    color: $color-light;
-    width: 100%;
-    height: 120px;
-  }
-
-  .carousel-wrapper {
-    margin: ($base-size * 3.5) auto;
-  }
-  
-  .carousel-cell {
-    width: 100%;
-    height: 160px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    background: $color-light;
-    border-radius: 5px;
-    counter-increment: carousel-cell;
-  }
-
-  .carousel-cell::before{
-    display: none;
-  }
-
-  .carousel-img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    margin-right: 30px;
-    margin-top: 15px;
-    float: left;
-  }
-
-  .gallery {
-    display: flex;
-    margin-top: 60px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    .gallery-wrapper {
-      flex: 33%;
-      position: relative;
-      max-width: 180px;
-      background-color: $color-dark;
-      margin: 4px;
-
-      img{
-        width: 180px;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 3px;
-        display: block;
+      p{
+        opacity: 1;
       }
-      
-      .icons{
-        list-style-type: none;
-        position: absolute;
-        z-index: 15;
-        bottom: 26%;
-        left: 15%;
-        font-size: 25px;
+    }
+
+  }
+
+  .order-online {
+    border-radius: $radius;
+  }
+
+  .book-table {
+    border-radius: $radius;
+  }
+
+  h2 {
+    font-size: 26px;
+    color: $color-light;
+    text-align: center;
+    padding: 18px 45px;
+    margin-bottom: -10px;
+  }
+
+  img {
+    position: relative;
+    width: 280px;
+    height: 110px;
+    margin-right: 5px;
+    z-index: 3;
+    object-fit: cover;
+    padding-bottom: 5px;
+  }
+}
+
+.open-hours {
+  margin-top: -25px;
+  text-align: center;
+  background: $color-main;
+  color: $color-light;
+  width: 100%;
+  height: 120px;
+  border-radius: $radius;
+
+  h2 {
+    padding-top: 24px;
+  }
+}
+
+.carousel-wrapper {
+  margin: ($base-size * 3.5) auto;
+}
+
+.carousel-cell {
+  width: 100%;
+  height: 160px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background: $color-light;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+.carousel-cell::before{
+  display: none;
+}
+
+.carousel-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-right: 30px;
+  margin-top: 15px;
+  float: left;
+  border-radius: $radius;
+}
+
+.gallery {
+  display: flex;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .gallery-wrapper {
+    flex: 33%;
+    position: relative;
+    max-width: 180px;
+    background-color: $color-dark;
+    margin: 4px;
+
+    img{
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 3px;
+      display: block;
+    }
+
+    .img-container {
+      &:hover{
+        img {
+          opacity: 0.3;
+          transition: all 0.3s;
+        }
+
+        .fa-heart {
+          visibility: visible;
+          color: $color-light;
+          transition: 0.5s;
+        }
+        
+        .fa-share-alt {
+          visibility: visible;
+          color: $color-light;
+          transition: 0.5s;
+        }
+      }
+    }
+
+    .icons{
+      list-style-type: none;
+      position: absolute;
+      z-index: 15;
+      bottom: 26%;
+      left: 15%;
+      font-size: 25px;
 
       li{
-        color: $color-main;
         display: inline;
         visibility: hidden;
 
-          &:hover .fa-heart {
-          color: $color-danger;
-          }
-
-          &:hover .fa-share-alt {
-          color: $color-danger;
-          }
+        &:hover .fa-heart {
+          color: $color-main;
+          transition: 0.5s;
         }
-      }
 
-      .img-container {
-        &:hover{
-          img {
-            opacity: 0.3;
-            transition: all 0.3s;
-          }
-
-          .fa-heart {
-            visibility: visible;
-            color: $color-main;
-          }
-          
-          .fa-share-alt {
-            visibility: visible;
-            color: $color-main;
-          }
+        &:hover .fa-share-alt {
+          color: $color-main;
+          transition: 0.5s;
         }
       }
     }
   }
-
-  footer {
-    font-family: $font-text;
-    font-size: 14px;
-
-    a {
-      color: $color-main;
-      text-decoration: underline;
-    }
-  }  
 }
+
+footer {
+  font-family: $font-text;
+  font-size: 14px;
+
+  a {
+    color: $color-main;
+    text-decoration: underline;
+  }
+}  
