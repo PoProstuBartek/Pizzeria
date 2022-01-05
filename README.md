@@ -1,2 +1,2 @@
 Open page at:
-https://pieczara-pizza.herokuapp.com/
+https://pieczarka-pizza.herokuapp.com/
