@@ -11,12 +11,11 @@
     justify-content: space-between;
 
     .map {
-      width: 300px;
-      height: 400px;
-
       iframe {
         border: 2px solid $color-dark;
         border-radius: 5px;
+        width: 300px;
+        height: 300px;
       }
     }
   }
@@ -35,7 +34,15 @@
 
     button {
       margin: 20px auto;
-      width: 30%;
+      width: 40%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-wrapper{
+    .opening-time{
+      flex-direction: column;
     }
   }
 }

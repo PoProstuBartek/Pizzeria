@@ -210,3 +210,41 @@ footer {
     text-decoration: underline;
   }
 }  
+
+@media (max-width: 767px) {
+  .home-header {
+    flex-direction: column;
+    .text{
+      h2 {
+        font-size: 20px;
+        padding: 0 30px;
+      }
+      
+      p {
+        opacity: 1;
+        margin: 10px;
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+  .open-hours {
+    .link {
+      font-size: 12px;
+    }
+  }
+
+  .carousel-wrapper {
+    min-height: 460px;
+
+    .carousel-cell {
+      height: 460px;
+    }
+
+    .carousel-img {
+      width: 100%;
+    }
+  }
+}

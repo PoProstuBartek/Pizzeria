@@ -202,3 +202,18 @@
   @include flex(row, flex-start, space-between);
   margin: ($base-size * 4) auto;
 }
+
+@media (max-width: 767px) {
+  .floor-plan {
+    width: 300px;
+  }
+
+  .booking-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .booking-option-title {
+    margin: 0 20px 24px 0;
+  }
+}

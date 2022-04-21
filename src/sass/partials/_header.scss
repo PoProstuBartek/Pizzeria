@@ -54,7 +54,32 @@
     &.active {
       background: lighten($color-dark, 75%);
     }
-
   }
+}
 
+@media (max-width: 767px) {
+  .header{
+    min-height: 300px;
+    width: 100vw;
+    padding: 0;
+
+    .container {
+      min-height: 300px;
+
+      .main-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 13px;
+        top: 190px;
+
+        a {
+          margin-right: 16px;
+        }
+      }
+
+      .cart {
+        top: 100px;
+      }
+    }
+  }
 }
