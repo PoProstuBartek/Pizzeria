@@ -1,0 +1,41 @@
+.contact-wrapper{
+  margin: 42px auto;
+  padding: 36px 48px;
+  background: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  border-radius: 4px;
+  max-width: 700px;
+  
+  .opening-time {
+    display: flex;
+    justify-content: space-between;
+
+    .map {
+      width: 300px;
+      height: 400px;
+
+      iframe {
+        border: 2px solid $color-dark;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  h4 {
+    width: 60%;
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 10px auto;
+
+    button {
+      margin: 20px auto;
+      width: 30%;
+    }
+  }
+}
