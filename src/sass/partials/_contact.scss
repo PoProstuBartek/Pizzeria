@@ -41,8 +41,15 @@
 
 @media (max-width: 767px) {
   .contact-wrapper{
+    padding: 36px 16px;
+
     .opening-time{
       flex-direction: column;
+
+      ul {
+        list-style-type: none;
+        text-align: center;
+      }
     }
   }
 }

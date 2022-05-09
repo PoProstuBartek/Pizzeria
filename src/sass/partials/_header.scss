@@ -67,13 +67,11 @@
       min-height: 300px;
 
       .main-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 13px;
-        top: 190px;
+        top: 252px;
 
         a {
-          margin-right: 16px;
+          margin-right: 12px;
+          padding: 12px 10px;
         }
       }
 

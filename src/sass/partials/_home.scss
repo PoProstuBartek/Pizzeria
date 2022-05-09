@@ -212,23 +212,28 @@ footer {
 }  
 
 @media (max-width: 767px) {
-  .home-header {
-    flex-direction: column;
+  .home-wrapper{
+    padding: 36px 12px;
 
-    .text{
-      h2 {
-        font-size: 20px;
-        padding: 0 30px;
+    .home-header {
+      flex-direction: column;
+  
+      .text{
+        width: 85%;
+        
+        h2 {
+          font-size: 20px;
+        }
+        
+        p {
+          opacity: 1;
+          margin: 10px;
+        }
       }
       
-      p {
-        opacity: 1;
-        margin: 10px;
+      img {
+        width: 100%;
       }
-    }
-    
-    img {
-      width: 100%;
     }
   }
 

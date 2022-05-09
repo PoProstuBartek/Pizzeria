@@ -122,8 +122,14 @@
 }
 
 @media (max-width: 767px) {
-  .product {
-    min-width: 600px;
+  .product__wrapper {
+    img {
+      display: none;
+    }
+  }
+
+  .product__order {
+    width: auto;
   }
 
   .amount-wrapper {
